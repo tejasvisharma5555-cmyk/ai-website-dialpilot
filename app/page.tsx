@@ -438,7 +438,7 @@ export default function Home() {
                 },
                 {
                   q: "Which languages does it speak?",
-                  a: "The demo speaks English. Your receptionist can be set up in other languages too, including Arabic and Hindi, and we test it with your callers in mind.",
+                  a: "The demo speaks English. Your receptionist can be set up in other languages too, including Spanish, and we test it with your callers in mind.",
                 },
                 {
                   q: "Does it work with my booking system?",
@@ -498,7 +498,7 @@ export default function Home() {
             <p className="mt-4 max-w-xs text-sm text-mist">
               AI voice receptionists for hair salons, beauty salons, barbershops and nail studios.
             </p>
-            <p className="mt-2 text-xs text-mist/70">Serving salons in Dubai, Abu Dhabi, the US and the UK.</p>
+            <p className="mt-2 text-xs text-mist/70">Serving salons across the USA, based on Florida time (ET).</p>
           </div>
           <div>
             <p className="text-xs font-semibold tracking-[0.2em] text-gold uppercase">Contact</p>
