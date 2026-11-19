@@ -9,6 +9,8 @@ export const OPEN_DEMO_EVENT = "dialpilot:open-demo";
 // Retell PUBLIC key (safe in the browser, restricted by allowed domains) + demo agent. Env vars override.
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_RETELL_PUBLIC_KEY || "public_key_150e4202af503c800126e";
 const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID || "agent_7dd2e9e07fd10fc34d66dd5efb";
+// Pinned published agent version, so new drafts in the Retell dashboard never reach visitors.
+const AGENT_VERSION = process.env.NEXT_PUBLIC_RETELL_AGENT_VERSION || "9";
 // Official Retell embedded widget (docs.retellai.com/deploy/chat-widget → "Embed the widget in a page section")
 const EMBED_SRC = "https://dashboard.retellai.com/retell-widget-embed.js";
 
@@ -324,6 +326,7 @@ export default function VoiceDemo() {
                 data-retell-widget="true"
                 data-voice-public-key={PUBLIC_KEY}
                 data-voice-agent-id={AGENT_ID}
+                data-agent-version={AGENT_VERSION}
                 data-title="Luxe Hair Salon · demo"
                 data-theme-color="#12203d"
                 data-component-color="#9c7a43"
