@@ -142,6 +142,31 @@ export default function VoiceDemo() {
     }
   }, [stopBubbles]);
 
+  // Hide the widget's built-in "Your RetellAI assistant" subtitle. The widget renders into an open
+  // shadow root, so page CSS can't reach it; inject a style tag into each shadow root instead.
+  useEffect(() => {
+    if (!widgetRequested) return;
+    const css = '[class*="_brandSubtitle_"]{display:none !important}';
+    const patch = () => {
+      try {
+        hostRef.current?.querySelectorAll("*").forEach((el) => {
+          const root = el.shadowRoot;
+          if (root && !root.querySelector("style[data-dp-patch]")) {
+            const style = document.createElement("style");
+            style.setAttribute("data-dp-patch", "");
+            style.textContent = css;
+            root.appendChild(style);
+          }
+        });
+      } catch {
+        /* cosmetic only — never break the demo */
+      }
+    };
+    patch();
+    const id = window.setInterval(patch, 400);
+    return () => window.clearInterval(id);
+  }, [widgetRequested]);
+
   // Load the Retell embed script once the host container is in the DOM.
   useEffect(() => {
     if (!widgetRequested || scriptState.current !== "none" || !hostRef.current) return;
